@@ -8,10 +8,9 @@ def check_file(dossier, fichier):
     byte = file.read(1)
     file.close()
     if byte == b'O':#Header of OGG file
-        print('OK')
         name = fichier.split('.')
-        print(name)
-        os.rename(dossier + fichier, dossier + name[0] + ".ogg")
+        if not os.path.exists(dossier + name[0] + ".ogg"):
+            os.rename(dossier + fichier, dossier + name[0] + ".ogg")
 
 def audio(path, file): #Download and check audio file (mp3 or ogg)
     if not os.path.exists(DIR_OUT + "mp3\\" + file + ".mp3"):
@@ -30,8 +29,8 @@ def audio(path, file): #Download and check audio file (mp3 or ogg)
         out_file = open(DIR_OUT + "mp3\\" + file + ".mp3", 'wb+')
         out_file.write(r.content)
         out_file.close()
-        #Check the extension file
-        check_file(path, file)
+    #Check the extension file
+    check_file(DIR_OUT + "mp3\\", file + ".mp3")
 
 def png(path, file):#Download the picture files
     if not os.path.exists(DIR_OUT + "png\\" + file + ".png"):
