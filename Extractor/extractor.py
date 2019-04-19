@@ -7,7 +7,7 @@ def check_file(dossier, fichier):
     file = open(dossier + fichier, "rb")
     byte = file.read(1)
     file.close()
-    if byte == b'O':#Header of OGG file
+    if byte == b'O': #Header of OGG file
         name = fichier.split('.')
         if not os.path.exists(dossier + name[0] + ".ogg"):
             os.rename(dossier + fichier, dossier + name[0] + ".ogg")
@@ -17,6 +17,8 @@ def audio(path, file): #Download and check audio file (mp3 or ogg)
         #Load URL in roblox temp file
         brut = open(path + file, "rb")
         lines = brut.readlines()
+        brut.close()
+        #Build URL
         url = ""
         i = 0
         while lines[0][i] != 104:
@@ -37,6 +39,8 @@ def png(path, file):#Download the picture files
         #Load the URL in Roblox temp file
         brut = open(path + file, "rb")
         lines = brut.readlines()
+        brut.close()
+        #Build URL
         url = ""
         i = 0
         while lines[0][i] != 104:
@@ -55,7 +59,6 @@ def detect(file): #Detect the format file(music or picture)
     brut = open(file, "rb")
     lines = brut.readlines()
     brut.close()
-
     long = len(lines)
     isOK = False
     if long > 7 and lines[7][0] == 67 and len(lines[7]) == 26:
@@ -69,17 +72,20 @@ def detect(file): #Detect the format file(music or picture)
 def main():
     list_file = os.listdir(DIR_IN)
     form = ""
+    #Create several folder
     if not os.path.isdir(DIR_OUT):
         os.makedirs(DIR_OUT)
     if not os.path.isdir(DIR_OUT + "mp3\\"):
         os.makedirs(DIR_OUT + "mp3\\")
     if not os.path.isdir(DIR_OUT + "png\\"):
         os.makedirs(DIR_OUT + "png\\")
+    #Progression
     number = len(list_file)
     acc = 1
+    #Processing files
     for file in list_file:
         print(((acc * 1000) // number) / 10, '%')
-        time.sleep(0.02)
+        time.sleep(0.02) #To avoid crash
         if os.stat(DIR_IN + file).st_size > 1000:
             form = detect(DIR_IN + file)
             if form == "png":
