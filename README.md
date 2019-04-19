@@ -4,6 +4,8 @@ You can find files of several map in the different branch.
 
 # Make Yourself : Python Extractor
 
+This program has been tested under Python 3.5 on Windows 10.
+
 ## User manual
 
 To use the script, you must edit the Input Folder (`DIR_IN`) and the Output Folder (`DIR_OUT`) at the begin of the Python file.
