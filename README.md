@@ -1,6 +1,3 @@
-# Pinewood
-Sounds and Pictures from Pinewood map in ROBLOX
-
 # Make Yourself : Python Extractor
 
 ## User manual
