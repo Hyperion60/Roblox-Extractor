@@ -1,4 +1,4 @@
-﻿import os, sys, requests
+﻿import os, sys, requests, time
 
 DIR_IN = 'C:\\Users\Hyperion\\AppData\\Local\\Temp\\Roblox\\http\\'
 DIR_OUT = 'C:\\Users\\Hyperion\\Documents\\Final\\'
@@ -80,6 +80,7 @@ def main():
     acc = 1
     for file in list_file:
         print(((acc * 1000) // number) / 10, '%')
+        time.sleep(0.02)
         if os.stat(DIR_IN + file).st_size > 1000:
             form = detect(DIR_IN + file)
             if form == "png":
