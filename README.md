@@ -3,6 +3,7 @@
 You can find files of several map in the different branch. Currently, I have two map analyzed : 
 * [Hyptek Nuclear Power Plant](https://github.com/Hyperion60/Roblox-Extractor/tree/Hyptek)
 * [Pinewood Builders Computer Core](https://github.com/Hyperion60/Roblox-Extractor/tree/Pinewood)
+* [Liquid Submarine](https://github.com//Hyperion60/Roblox-Extractor/tree/Submarine)
 
 # Make It Yourself : Python Extractor
 
