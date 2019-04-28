@@ -1,7 +1,8 @@
-﻿import os, sys, requests, time
+import os, sys, requests, time
 
 DIR_IN = 'C:\\Users\Hyperion\\AppData\\Local\\Temp\\Roblox\\http\\'
 DIR_OUT = 'C:\\Users\\Hyperion\\Documents\\Final\\'
+
 
 def check_file(dossier, fichier):
     file = open(dossier + fichier, "rb")
@@ -61,9 +62,14 @@ def detect(file): #Detect the format file(music or picture)
     brut.close()
     long = len(lines)
     isOK = False
+    if long > 3 and lines[1][0] == 67 and len(lines[1]) == 26:
+        isOK = True
+        return "mp3"
     if long > 7 and lines[7][0] == 67 and len(lines[7]) == 26:
         isOK = True
         return "mp3"
+    if not isOK and long > 26 and len(lines[26]) > 1 and lines[26][1] == 80:
+        return "png"
     if not isOK and long > 17 and len(lines[17]) > 1 and lines[17][1] == 80:
         return "png"
     else:
